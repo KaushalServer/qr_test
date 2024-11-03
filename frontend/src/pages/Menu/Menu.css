@@ -12,6 +12,26 @@
     color: #333;
 }
 
+/* User Info Section */
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.user-icon {
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    border-radius: 50%; /* Make it circular */
+    margin-right: 10px; /* Space between icon and username */
+}
+
+.username {
+    font-size: 1.5rem;
+    color: #333;
+}
+
 /* Menu Items */
 .menu-items-wrapper {
     display: flex;

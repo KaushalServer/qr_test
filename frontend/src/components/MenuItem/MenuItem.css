@@ -38,8 +38,3 @@
     color: #555; /* Darker gray for better contrast */
     margin: 5px 0; /* Added margin for spacing */
 }
-
-.half-price {
-    color: #888; /* Lighter color for half price */
-    text-decoration: line-through; /* Optional: strike-through for half price */
-}

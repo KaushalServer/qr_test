@@ -4,7 +4,7 @@ const menuSchema = new mongoose.Schema({
     item_name: {
         type: String,
         required: true,
-        unique: true,
+        // unique: true,
     },
     item_price_full: {
         type: Number,
@@ -32,6 +32,8 @@ const menuSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
+// Create a compound index on item_name and restaurant_id
+menuSchema.index({ item_name: 1, restaurant_id: 1 }, { unique: true });
 
 const Menu = mongoose.model('Menu', menuSchema);
 

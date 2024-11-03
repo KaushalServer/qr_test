@@ -8,16 +8,18 @@ import { selectLoggedInUser } from './store/user/userSlice';
 import Menu from './pages/Menu/Menu.jsx';
 import { useSelector } from 'react-redux';
 import ResaturantMenu from './components/RestaurantMenu/RestaurantMenu.jsx';
+import LandingPage from './components/LandingPage/LandingPage.jsx';
+import { useState } from 'react';
 
 function App() {
-// useSelector
+
   const currentUser = useSelector(selectLoggedInUser);
   // console.log(currentUser);
 
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<Menu />} /> */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/menu" element={currentUser.user !== null ? <Menu /> : <Navigate to="/login" replace />} />

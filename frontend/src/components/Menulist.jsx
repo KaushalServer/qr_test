@@ -42,9 +42,9 @@ const Menulist = ({ restaurantSlug }) => {
     // Api call with restaurent Name in request body
 
     return (
-        <div className="container">
-            <h2 className="menu">{restaurantSlug} Menu</h2>
-            <div className="menu-items">
+        <div className="menu-container">
+            <h2 className="menu-heading">{restaurantSlug} Menu</h2>
+            <div className="menu-items-wrapper">
                 {menus.map((item) => (
                     <MenuItem
                         key={item._id}

@@ -5,20 +5,25 @@ import { selectLoggedInUser } from '../../store/user/userSlice.js';
 import MenuItem from '../../components/MenuItem/MenuItem.jsx';
 import "./Menu.css";
 import "./Modal.css";
+import burgerImage from '../../assets/burger.jpeg';
 
 const Menu = () => {
-    const [menuData, setMenuData] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const [showHalfPriceInput, setShowHalfPriceInput] = useState(false);
-    const [formData, setFormData] = useState({
+
+    const initialFormData = {
         item_name: '',
         item_price_full: '',
         item_price_half: '',
         item_image: null,
-    });
+    };
+
+    const [menuData, setMenuData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [showHalfPriceInput, setShowHalfPriceInput] = useState(false);
+    const [formData, setFormData] = useState(initialFormData);
     const [menuUpdated, setMenuUpdated] = useState(false);
 
     const currentUser = useSelector(selectLoggedInUser);
+    const restaurantName = currentUser.user.restaurantName;
     // console.log(currentUser);
     
 
@@ -67,6 +72,8 @@ const Menu = () => {
         }
 
         setShowModal(false);
+        setFormData(initialFormData);
+        setShowHalfPriceInput(false);
     };
 
     const fetchData = async () => {
@@ -94,7 +101,15 @@ const Menu = () => {
 
     return (
         <div className="menu-container">
-            <h1 className="menu-heading">Our Menu</h1>
+            <div className="user-info">
+                {currentUser.user && (
+                    <>
+                        <img src={currentUser.user.image ?? burgerImage} alt={currentUser.user.username} className="user-icon" />
+                        <span className="username">{currentUser.user.username}</span>
+                    </>
+                )}
+            </div>
+            <h1 className="menu-heading">{restaurantName} Menu</h1>
             <div className="menu-items-wrapper">
                 {menuData.map(item => (
                     <MenuItem key={item._id}
